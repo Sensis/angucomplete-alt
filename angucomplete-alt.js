@@ -482,7 +482,7 @@
           status = errorRes.status;
         }
         if (scope.remoteUrlErrorCallback) {
-          scope.remoteUrlErrorCallback(errorRes, status, headers, config);
+          scope.remoteUrlErrorCallback(errorRes, status, headers, config, scope);
         }
         else {
           if (console && console.error) {
