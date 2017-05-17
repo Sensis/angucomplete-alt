@@ -481,6 +481,9 @@
         if (!status && !headers && !config) {
           status = errorRes.status;
         }
+        if (scope.clearResultsOnError) {
+          clearResults();
+        }
         if (scope.remoteUrlErrorCallback) {
           scope.remoteUrlErrorCallback(errorRes, status, headers, config);
         }
@@ -488,9 +491,6 @@
           if (console && console.error) {
             console.error('http error');
           }
-        }
-        if (scope.clearResultsOnError) {
-          scope.results = [];
         }
       }
 
