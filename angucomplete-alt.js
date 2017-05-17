@@ -482,12 +482,15 @@
           status = errorRes.status;
         }
         if (scope.remoteUrlErrorCallback) {
-          scope.remoteUrlErrorCallback(errorRes, status, headers, config, scope);
+          scope.remoteUrlErrorCallback(errorRes, status, headers, config);
         }
         else {
           if (console && console.error) {
             console.error('http error');
           }
+        }
+        if (scope.clearResultsOnError) {
+          scope.results = [];
         }
       }
 
@@ -900,7 +903,8 @@
         clearListCustomLabel: '@',
         minLengthForMatchClass: '@',
         minLengthForApiCall: '@',
-        defaultLocation: '@'
+        defaultLocation: '@',
+        clearResultsOnError: '@'
       },
       templateUrl: function (element, attrs) {
         return attrs.templateUrl || TEMPLATE_URL;
