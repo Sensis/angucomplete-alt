@@ -481,6 +481,9 @@
         if (!status && !headers && !config) {
           status = errorRes.status;
         }
+        if (scope.clearResultsOnError) {
+          clearResults();
+        }
         if (scope.remoteUrlErrorCallback) {
           scope.remoteUrlErrorCallback(errorRes, status, headers, config);
         }
@@ -900,7 +903,8 @@
         clearListCustomLabel: '@',
         minLengthForMatchClass: '@',
         minLengthForApiCall: '@',
-        defaultLocation: '@'
+        defaultLocation: '@',
+        clearResultsOnError: '@'
       },
       templateUrl: function (element, attrs) {
         return attrs.templateUrl || TEMPLATE_URL;
